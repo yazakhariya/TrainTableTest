@@ -39,19 +39,10 @@ export const TableBody = styled.tbody`
   overflow-x: hidden;
 `
 
-export const TableBodyName = styled.td`
+export const TableBodyElement = styled.td`
   color: #000000;
   border-top: solid 1px #f3f6f4;
   padding: 10px 50px 10px 10px;
   font-size: 15px;
   white-space: nowrap;
-  cursor: pointer;
-`
-
-export const TableBodyDesc = styled.td`
-  color: #000000;
-  border-top: solid 1px #f3f6f4;
-  padding: 10px 50px 10px 10px;
-  white-space: nowrap;
-  cursor: arrow;
 `

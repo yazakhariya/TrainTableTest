@@ -1,8 +1,25 @@
-
-import UiTableBody from '../components/UiTableBody'
+import * as React from 'react'
+import { QueryFn, ElementType } from 'src/api/types'
 import * as S from './TrainTable.style'
+import UiModal from '../components/UiModal'
+import TrainCharact from './components/TrainCharacteristics'
 
-const TrainTable = () => {
+type Props = {
+  data: QueryFn
+}
+
+const TrainTable = ({ data }: Props) => {
+  const [openModal, setOpenModal] = React.useState<boolean | null>(null)
+  const [trainName, setTrainName] = React.useState<string>('')
+
+  console.log(trainName)
+
+  const trainModal = openModal ? (
+    <UiModal closeModalFn={() => setOpenModal(null)}>
+      <TrainCharact data={data} name={trainName} />
+    </UiModal>
+  ) : null
+
   return (
     <S.Layout>
       <S.TableBox>
@@ -11,14 +28,28 @@ const TrainTable = () => {
           <S.TableHead>
             <tr>
               <S.TableHeader>Название</S.TableHeader>
-            </tr>
-          </S.TableHead>
-          <S.TableHead>
-            <tr>
               <S.TableHeader>Описание</S.TableHeader>
             </tr>
           </S.TableHead>
-          <UiTableBody children={undefined} />
+          <S.TableBody>
+            {data
+              ? data.map((el: ElementType, i: number) => {
+                  return (
+                    <tr
+                      onClick={() => {
+                        setTrainName(el.name)
+                        setOpenModal(true)
+                      }}
+                      key={i}
+                    >
+                      <S.TableBodyName>{el.name}</S.TableBodyName>
+                      <S.TableBodyDesc>{el.description}</S.TableBodyDesc>
+                    </tr>
+                  )
+                })
+              : null}
+            {trainModal ? trainModal : null}
+          </S.TableBody>
         </S.TableWrapper>
       </S.TableBox>
     </S.Layout>
