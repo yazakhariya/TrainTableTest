@@ -37,6 +37,7 @@ export const TableBody = styled.tbody`
   height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
+  width: 300px;
 `
 
 export const TableBodyName = styled.td`

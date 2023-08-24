@@ -1,21 +1,28 @@
 import { styled } from 'styled-components'
 
-export const Layout = styled.div`
-  min-height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
 export const TableBox = styled.div`
   background-color: #ffffff;
   padding: 10px;
   border-radius: 10px;
 `
 
-export const MainTitle = styled.h2`
+export const TableTop = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export const Title = styled.h2`
   color: #000000;
+`
+
+export const SubTitle = styled.h2`
+  color: #000000;
+`
+export const ImageWrapper = styled.div`
+  padding: 10px;
+  cursor: pointer;
 `
 
 export const TableWrapper = styled.table`
@@ -29,7 +36,9 @@ export const TableHead = styled.thead`
 
 export const TableHeader = styled.th`
   color: #999999;
-  padding: 10px 50px 10px 10px;
+  padding: 10px 60px 10px 8px;
+  vertical-align: middle;
+  text-align: center;
 `
 
 export const TableBody = styled.tbody`
@@ -37,12 +46,15 @@ export const TableBody = styled.tbody`
   height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
+  width: 500px;
 `
 
 export const TableBodyElement = styled.td`
+  padding: 12px 60px 10px 60px;
   color: #000000;
   border-top: solid 1px #f3f6f4;
-  padding: 10px 50px 10px 10px;
+  vertical-align: middle;
+  text-align: center;
   font-size: 15px;
   white-space: nowrap;
 `
