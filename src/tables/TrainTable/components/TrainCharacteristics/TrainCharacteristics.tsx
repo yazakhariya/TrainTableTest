@@ -61,6 +61,7 @@ const TrainCharact = ({ data, name, closeModalFn }: Props) => {
                           index={i}
                           block={setButtonBlock}
                           set={setspeed}
+                          blocked={buttonBlock}
                         />
                       </tr>
                     )

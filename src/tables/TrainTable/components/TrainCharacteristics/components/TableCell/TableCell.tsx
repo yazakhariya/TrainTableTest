@@ -8,14 +8,25 @@ type Props = {
   index: number
   block: React.Dispatch<React.SetStateAction<boolean>>
   set: React.Dispatch<React.SetStateAction<unknown[]>>
+  blocked: boolean
 }
 
-const TableCell = ({ speed, force, engine, index, block, set }: Props) => {
+const TableCell = ({
+  speed,
+  force,
+  engine,
+  index,
+  block,
+  set,
+  blocked,
+}: Props) => {
   const [cellValueSpeed, setCellValueSppeed] = React.useState(speed)
   const [cellValueForce, setCellValueForce] = React.useState(force)
   const [cellValueEngineAmperage, setCellValueEngineAmperage] =
     React.useState(engine)
-
+  const [editS, seteditS] = React.useState<boolean>(false)
+  const [editF, seteditF] = React.useState<boolean>(false)
+  const [editE, seteditE] = React.useState<boolean>(false)
   const inputSpeedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
     setCellValueSppeed(Number(value.slice(0, 9)))
@@ -61,22 +72,83 @@ const TableCell = ({ speed, force, engine, index, block, set }: Props) => {
 
   return (
     <S.TableBodyElement>
-      <S.ElementInput
-        value={cellValueSpeed}
-        onChange={(event) => inputSpeedHandler(event)}
-        type="number"
-        name={`${index}`}
-      />
-      <S.ElementInput
-        value={cellValueForce}
-        onChange={(event) => inputForceHandler(event)}
-        type="number"
-      />
-      <S.ElementInput
-        value={cellValueEngineAmperage}
-        onChange={(event) => inputEngineHandler(event)}
-        type="number"
-      />
+      {!editS ? (
+        <>
+          <span>{cellValueSpeed}</span>
+          <button
+            onClick={() => seteditS(true)}
+            disabled={blocked ? true : false}
+          >
+            edit
+          </button>
+        </>
+      ) : (
+        <>
+          <S.ElementInput
+            value={cellValueSpeed}
+            onChange={(event) => inputSpeedHandler(event)}
+            type="number"
+            name={`${index}`}
+          />
+          <button
+            onClick={() => seteditS(false)}
+            disabled={blocked ? true : false}
+          >
+            ok
+          </button>
+        </>
+      )}
+      {!editF ? (
+        <>
+          <span>{cellValueForce}</span>
+          <button
+            onClick={() => seteditF(true)}
+            disabled={blocked ? true : false}
+          >
+            edit
+          </button>
+        </>
+      ) : (
+        <>
+          <S.ElementInput
+            value={cellValueForce}
+            onChange={(event) => inputForceHandler(event)}
+            type="number"
+          />
+          <button
+            onClick={() => seteditF(false)}
+            disabled={blocked ? true : false}
+          >
+            ok
+          </button>
+        </>
+      )}
+
+      {!editE ? (
+        <>
+          <span>{cellValueEngineAmperage}</span>
+          <button
+            onClick={() => seteditE(true)}
+            disabled={blocked ? true : false}
+          >
+            edit
+          </button>
+        </>
+      ) : (
+        <>
+          <S.ElementInput
+            value={cellValueEngineAmperage}
+            onChange={(event) => inputEngineHandler(event)}
+            type="number"
+          />
+          <button
+            onClick={() => seteditE(false)}
+            disabled={blocked ? true : false}
+          >
+            ok
+          </button>
+        </>
+      )}
     </S.TableBodyElement>
   )
 }
