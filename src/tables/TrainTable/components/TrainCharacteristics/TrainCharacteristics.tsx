@@ -2,6 +2,7 @@ import * as React from 'react'
 import { ElementCharacteristics, ElementType, QueryFn } from 'src/api/types'
 import * as S from './TrainCharacteristics.style'
 import cross from 'src/assets/cross-square-svgrepo-com.svg'
+import TableCell from './components/TableCell'
 
 type Props = {
   data: QueryFn
@@ -11,6 +12,17 @@ type Props = {
 
 const TrainCharact = ({ data, name, closeModalFn }: Props) => {
   const [trainInfo, setTrainInfo] = React.useState(Array(0))
+
+  const [buttonBlock, setButtonBlock] = React.useState<boolean>(false)
+
+  const [speed, setspeed] = React.useState(Array(0))
+
+  const handleClick = () => {
+    const sorted = Object.values(speed).sort(function (a, b) {
+      return a - b
+    })
+    console.log(sorted)
+  }
 
   React.useEffect(() => {
     setTrainInfo(
@@ -24,10 +36,10 @@ const TrainCharact = ({ data, name, closeModalFn }: Props) => {
         <S.Title>Характеристики</S.Title>
         <S.ImageWrapper onClick={closeModalFn}>
           <img src={cross} width="20px" height="20px" />
-        </S.ImageWrapper> 
+        </S.ImageWrapper>
       </S.TableTop>
       <S.SubTitle>{name}</S.SubTitle>
-      <S.TableWrapper>
+      <S.TableWrapper id="table">
         <S.TableHead>
           <tr>
             <S.TableHeader>Ток двигателя</S.TableHeader>
@@ -42,11 +54,14 @@ const TrainCharact = ({ data, name, closeModalFn }: Props) => {
                   (el: ElementCharacteristics, i: number) => {
                     return (
                       <tr key={i}>
-                        <S.TableBodyElement>{el.speed}</S.TableBodyElement>
-                        <S.TableBodyElement>{el.force}</S.TableBodyElement>
-                        <S.TableBodyElement>
-                          {el.engineAmperage}
-                        </S.TableBodyElement>
+                        <TableCell
+                          speed={el.speed}
+                          force={el.force}
+                          engine={el.engineAmperage}
+                          index={i}
+                          block={setButtonBlock}
+                          set={setspeed}
+                        />
                       </tr>
                     )
                   }
@@ -55,7 +70,11 @@ const TrainCharact = ({ data, name, closeModalFn }: Props) => {
             : null}
         </S.TableBody>
       </S.TableWrapper>
-      <button>Отправить данные</button>
+      <S.ButtonBox>
+        <S.Button onClick={handleClick} disabled={buttonBlock}>
+          Отправить данные
+        </S.Button>
+      </S.ButtonBox>
     </S.TableBox>
   )
 }

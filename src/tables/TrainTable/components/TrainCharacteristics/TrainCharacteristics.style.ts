@@ -49,12 +49,16 @@ export const TableBody = styled.tbody`
   width: 500px;
 `
 
-export const TableBodyElement = styled.td`
-  padding: 12px 60px 10px 60px;
-  color: #000000;
-  border-top: solid 1px #f3f6f4;
-  vertical-align: middle;
-  text-align: center;
-  font-size: 15px;
-  white-space: nowrap;
+export const ButtonBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+export const Button = styled.button`
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  border: solid 1px #000000;
+  width: fit-content;
 `
