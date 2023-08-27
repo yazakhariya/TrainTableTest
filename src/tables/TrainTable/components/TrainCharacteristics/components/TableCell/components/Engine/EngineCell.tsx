@@ -1,5 +1,9 @@
 import * as React from 'react'
-import * as S from './EngineCell.style'
+import edit from 'src/assets/edit.svg'
+import done from 'src/assets/done.svg'
+import UiButton from 'src/components/UiButton'
+import UiInput from 'src/components/UiInput'
+import UiSpan from 'src/components/UiSpan'
 
 type Props = {
   engine?: number
@@ -15,7 +19,7 @@ const EngineCell = ({ engine, block, blocked, index }: Props) => {
   const inputEngineHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     cellValueEngineAmperage.current = Number(value.slice(0, 9))
-   
+
     if (!Number.isInteger(cellValueEngineAmperage.current)) {
       event.target.style.backgroundColor = 'red'
       block(true)
@@ -29,27 +33,27 @@ const EngineCell = ({ engine, block, blocked, index }: Props) => {
     <>
       {!editE ? (
         <>
-          <span>{cellValueEngineAmperage.current}</span>
-          <button
+          <UiSpan>{cellValueEngineAmperage.current}</UiSpan>
+          <UiButton
             onClick={() => seteditE(true)}
             disabled={blocked ? true : false}
           >
-            edit
-          </button>
+            <img src={edit} width="20px" height="20px" />
+          </UiButton>
         </>
       ) : (
         <>
-          <S.ElementInput
+          <UiInput
             onChange={inputEngineHandler}
             type="number"
             name={`${index}`}
           />
-          <button
+          <UiButton
             onClick={() => seteditE(false)}
             disabled={blocked ? true : false}
           >
-            ok
-          </button>
+            <img src={done} width="20px" height="20px" />
+          </UiButton>
         </>
       )}
     </>

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import * as S from './TableCell.style'
+import * as S from './TableRow.style'
 import SpeedCell from './components/Speed'
 import ForceCell from './components/Force'
 import EngineCell from './components/Engine'
@@ -14,7 +14,7 @@ type Props = {
   blocked: boolean
 }
 
-const TableCell = ({
+const TableRow = ({
   speed,
   force,
   engine,
@@ -43,4 +43,4 @@ const TableCell = ({
   )
 }
 
-export default TableCell
+export default TableRow

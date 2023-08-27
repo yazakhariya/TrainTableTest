@@ -1,3 +1,3 @@
-import TableCell from './TableCell'
+import TableRow from './TableRow'
 
-export default TableCell
+export default TableRow

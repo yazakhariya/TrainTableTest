@@ -1,12 +1,16 @@
 import * as React from 'react'
-import * as S from './SpeedCell.style'
+import UiButton from 'src/components/UiButton'
+import edit from 'src/assets/edit.svg'
+import done from 'src/assets/done.svg'
+import UiInput from 'src/components/UiInput'
+import UiSpan from 'src/components/UiSpan'
 
 type Props = {
-    set: React.Dispatch<React.SetStateAction<unknown[]>>
-    speed?: number
-    index: number
-    block: React.Dispatch<React.SetStateAction<boolean>>
-    blocked: boolean
+  set: React.Dispatch<React.SetStateAction<unknown[]>>
+  speed?: number
+  index: number
+  block: React.Dispatch<React.SetStateAction<boolean>>
+  blocked: boolean
 }
 
 const SpeedCell = ({ set, speed, index, block, blocked }: Props) => {
@@ -16,7 +20,7 @@ const SpeedCell = ({ set, speed, index, block, blocked }: Props) => {
   const inputSpeedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
     cellValueSpeed.current = Number(value.slice(0, 9))
-    
+
     if (!Number.isInteger(cellValueSpeed.current)) {
       event.target.style.backgroundColor = 'red'
       block(true)
@@ -30,32 +34,32 @@ const SpeedCell = ({ set, speed, index, block, blocked }: Props) => {
       [name]: parseInt(value),
     }))
   }
-  
+
   return (
     <>
       {!editS ? (
         <>
-          <span>{cellValueSpeed.current}</span>
-          <button
+          <UiSpan>{cellValueSpeed.current}</UiSpan>
+          <UiButton
             onClick={() => seteditS(true)}
             disabled={blocked ? true : false}
           >
-            edit
-          </button>
+            <img src={edit} width="20px" height="20px" />
+          </UiButton>
         </>
       ) : (
         <>
-          <S.ElementInput
+          <UiInput
             onChange={inputSpeedHandler}
             type="number"
             name={`${index}`}
           />
-          <button
+          <UiButton
             onClick={() => seteditS(false)}
             disabled={blocked ? true : false}
           >
-            ok
-          </button>
+            <img src={done} width="20px" height="20px" />
+          </UiButton>
         </>
       )}
     </>

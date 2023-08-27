@@ -2,7 +2,8 @@ import * as React from 'react'
 import { ElementCharacteristics, ElementType, QueryFn } from 'src/api/types'
 import * as S from './TrainCharacteristics.style'
 import cross from 'src/assets/cross-square-svgrepo-com.svg'
-import TableCell from './components/TableCell'
+import TableRow from './components/TableCell'
+import UiButton from 'src/components/UiButton'
 
 type Props = {
   data: QueryFn
@@ -54,7 +55,7 @@ const TrainCharact = ({ data, name, closeModalFn }: Props) => {
                   (el: ElementCharacteristics, i: number) => {
                     return (
                       <tr key={i}>
-                        <TableCell
+                        <TableRow
                           speed={el.speed}
                           force={el.force}
                           engine={el.engineAmperage}
@@ -72,9 +73,9 @@ const TrainCharact = ({ data, name, closeModalFn }: Props) => {
         </S.TableBody>
       </S.TableWrapper>
       <S.ButtonBox>
-        <S.Button onClick={handleClick} disabled={buttonBlock}>
+        <UiButton onClick={handleClick} disabled={buttonBlock}>
           Отправить данные
-        </S.Button>
+        </UiButton>
       </S.ButtonBox>
     </S.TableBox>
   )

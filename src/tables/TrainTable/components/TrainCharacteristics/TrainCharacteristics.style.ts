@@ -53,12 +53,5 @@ export const ButtonBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-
-export const Button = styled.button`
-  background-color: #ffffff;
   padding: 10px;
-  border-radius: 10px;
-  border: solid 1px #000000;
-  width: fit-content;
 `

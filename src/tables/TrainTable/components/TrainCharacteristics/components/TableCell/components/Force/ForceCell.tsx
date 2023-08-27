@@ -1,5 +1,9 @@
 import * as React from 'react'
-import * as S from './ForceCell.style'
+import edit from 'src/assets/edit.svg'
+import done from 'src/assets/done.svg'
+import UiButton from 'src/components/UiButton'
+import UiInput from 'src/components/UiInput'
+import UiSpan from 'src/components/UiSpan'
 
 type Props = {
   force?: number
@@ -15,7 +19,7 @@ const ForceCell = ({ force, block, blocked, index }: Props) => {
   const inputForceHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     cellValueForce.current = Number(value.slice(0, 9))
-   
+
     if (Number.isInteger(cellValueForce.current)) {
       event.target.style.backgroundColor = 'red'
       block(true)
@@ -29,27 +33,27 @@ const ForceCell = ({ force, block, blocked, index }: Props) => {
     <>
       {!editF ? (
         <>
-          <span>{cellValueForce.current}</span>
-          <button
+          <UiSpan>{cellValueForce.current}</UiSpan>
+          <UiButton
             onClick={() => seteditF(true)}
             disabled={blocked ? true : false}
           >
-            edit
-          </button>
+            <img src={edit} width="20px" height="20px" />
+          </UiButton>
         </>
       ) : (
         <>
-          <S.ElementInput
+          <UiInput
             onChange={inputForceHandler}
             type="number"
             name={`${index}`}
           />
-          <button
+          <UiButton
             onClick={() => seteditF(false)}
             disabled={blocked ? true : false}
           >
-            ok
-          </button>
+            <img src={done} width="20px" height="20px" />
+          </UiButton>
         </>
       )}
     </>
