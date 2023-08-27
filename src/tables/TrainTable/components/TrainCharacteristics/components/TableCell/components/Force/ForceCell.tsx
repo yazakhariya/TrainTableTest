@@ -43,7 +43,6 @@ const ForceCell = ({ force, block, blocked, index }: Props) => {
             onChange={inputForceHandler}
             type="number"
             name={`${index}`}
-            value={cellValueForce.current}
           />
           <button
             onClick={() => seteditF(false)}

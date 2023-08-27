@@ -49,7 +49,6 @@ const SpeedCell = ({ set, speed, index, block, blocked }: Props) => {
             onChange={inputSpeedHandler}
             type="number"
             name={`${index}`}
-            value={cellValueSpeed.current}
           />
           <button
             onClick={() => seteditS(false)}

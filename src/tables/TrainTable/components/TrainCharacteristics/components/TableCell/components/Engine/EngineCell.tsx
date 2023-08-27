@@ -43,7 +43,6 @@ const EngineCell = ({ engine, block, blocked, index }: Props) => {
             onChange={inputEngineHandler}
             type="number"
             name={`${index}`}
-            value={cellValueEngineAmperage.current}
           />
           <button
             onClick={() => seteditE(false)}
