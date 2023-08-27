@@ -3,7 +3,6 @@
 ## Stack:
 - React
 - TypeScript
-- React Router
 - React Redux
 - Styled Components
 
