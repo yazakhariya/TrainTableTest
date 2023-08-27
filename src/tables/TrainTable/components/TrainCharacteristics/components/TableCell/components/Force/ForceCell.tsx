@@ -15,7 +15,7 @@ const ForceCell = ({ force, block, blocked, index }: Props) => {
   const inputForceHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     cellValueForce.current = Number(value.slice(0, 9))
-    console.log(cellValueForce.current)
+   
     if (Number.isInteger(cellValueForce.current)) {
       event.target.style.backgroundColor = 'red'
       block(true)

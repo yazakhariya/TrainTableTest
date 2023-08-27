@@ -16,7 +16,7 @@ const SpeedCell = ({ set, speed, index, block, blocked }: Props) => {
   const inputSpeedHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
     cellValueSpeed.current = Number(value.slice(0, 9))
-    console.log(cellValueSpeed.current)
+    
     if (!Number.isInteger(cellValueSpeed.current)) {
       event.target.style.backgroundColor = 'red'
       block(true)

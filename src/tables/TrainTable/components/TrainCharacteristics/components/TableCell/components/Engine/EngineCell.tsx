@@ -15,7 +15,7 @@ const EngineCell = ({ engine, block, blocked, index }: Props) => {
   const inputEngineHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target
     cellValueEngineAmperage.current = Number(value.slice(0, 9))
-    console.log(cellValueEngineAmperage.current)
+   
     if (!Number.isInteger(cellValueEngineAmperage.current)) {
       event.target.style.backgroundColor = 'red'
       block(true)
