@@ -6,7 +6,7 @@ import TableRow from './components/TableCell'
 import UiButton from 'src/components/UiButton'
 
 type Props = {
-  data: QueryFn
+  data?: QueryFn
   name: string
   closeModalFn: () => void
 }
@@ -27,7 +27,7 @@ const TrainCharact = ({ data, name, closeModalFn }: Props) => {
 
   React.useEffect(() => {
     setTrainInfo(
-      Array(data.filter((item: { name: string }) => item.name === name))
+      Array(data?.filter((item: { name: string }) => item.name === name))
     )
   }, [data, name])
 

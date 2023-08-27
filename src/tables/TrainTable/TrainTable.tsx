@@ -1,19 +1,19 @@
 import * as React from 'react'
-import { QueryFn, ElementType } from 'src/api/types'
+import { useGetTrainDataQuery } from 'src/api/api'
+import { ElementType } from 'src/api/types'
 import * as S from './TrainTable.style'
 import TrainCharact from './components/TrainCharacteristics'
+import loading from 'src/assets/loading.svg'
 
-type Props = {
-  data: QueryFn
-}
-
-const TrainTable = ({ data }: Props) => {
+const TrainTable = () => {
+  const { data, isLoading } = useGetTrainDataQuery()
   const [openModal, setOpenModal] = React.useState<boolean | null>(null)
   const [trainName, setTrainName] = React.useState<string>('')
 
   return (
     <S.Layout>
-      {openModal ? (
+      {isLoading ? <img src={loading} width="200px" height="200px" /> : 
+      openModal ? (
         <TrainCharact closeModalFn={() => setOpenModal(null)} data={data} name={trainName} />
       ) : (
         <S.TableBox>
