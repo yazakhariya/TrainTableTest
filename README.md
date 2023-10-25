@@ -7,5 +7,11 @@
 - Styled Components
 
 ## Для начала работы необходимо:
-1. Сохранить проект локально.
-2. Ввести в консоли команду "npm run dev".
+1. Сохранить проект локально: 
+```bash
+git clone https://github.com/yazakhariya/TrainTableTest
+```  
+2. Ввести в консоли команду 
+```bash 
+npm run dev
+```
